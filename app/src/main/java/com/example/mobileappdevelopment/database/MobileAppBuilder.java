@@ -8,14 +8,14 @@ import androidx.room.RoomDatabase;
 
 import com.example.mobileappdevelopment.dao.AssessmentDAO;
 import com.example.mobileappdevelopment.dao.CourseDAO;
-import com.example.mobileappdevelopment.dao.TermDao;
+import com.example.mobileappdevelopment.dao.TermDAO;
 import com.example.mobileappdevelopment.entities.Assessments;
 import com.example.mobileappdevelopment.entities.Courses;
 import com.example.mobileappdevelopment.entities.Terms;
 
-@Database(entities = {Assessments.class, Courses.class, Terms.class}, version = 3, exportSchema = false)
+@Database(entities = {Assessments.class, Courses.class, Terms.class}, version = 4, exportSchema = false)
 public abstract class MobileAppBuilder extends RoomDatabase {
-    public abstract TermDao termDao();
+    public abstract TermDAO termDao();
 
     public abstract CourseDAO courseDAO();
 

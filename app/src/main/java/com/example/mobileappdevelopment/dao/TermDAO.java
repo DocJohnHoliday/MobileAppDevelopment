@@ -12,7 +12,7 @@ import com.example.mobileappdevelopment.entities.Terms;
 import java.util.List;
 
 @Dao
-public interface TermDao {
+public interface TermDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Terms terms);
 
@@ -22,6 +22,6 @@ public interface TermDao {
     @Delete
     void delete(Terms terms);
 
-    @Query("SELECT * FROM Terms ORDER BY termId ASC")
+    @Query("SELECT * FROM terms ORDER BY termId ASC")
     List<Terms> getAllTerms();
 }

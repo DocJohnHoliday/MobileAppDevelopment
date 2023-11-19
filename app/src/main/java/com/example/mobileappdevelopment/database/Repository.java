@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.example.mobileappdevelopment.dao.AssessmentDAO;
 import com.example.mobileappdevelopment.dao.CourseDAO;
-import com.example.mobileappdevelopment.dao.TermDao;
+import com.example.mobileappdevelopment.dao.TermDAO;
 import com.example.mobileappdevelopment.entities.Assessments;
 import com.example.mobileappdevelopment.entities.Courses;
 import com.example.mobileappdevelopment.entities.Terms;
@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 public class Repository {
     private AssessmentDAO mAssessmentDAO;
     private CourseDAO mCourseDAO;
-    private TermDao mTermDAO;
+    private TermDAO mTermDAO;
 
     private List<Terms> mAllTerms;
     private List<Courses> mAllCourses;
