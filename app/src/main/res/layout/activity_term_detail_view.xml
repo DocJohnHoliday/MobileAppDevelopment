@@ -64,10 +64,11 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/partrecyclerview"
+        android:id="@+id/courserecyclerview"
         android:layout_width="409dp"
         android:layout_height="473dp"
         app:layout_constraintLeft_toLeftOf="parent"
