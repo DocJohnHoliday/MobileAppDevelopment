@@ -42,18 +42,20 @@ public class TermDetail extends AppCompatActivity {
         editTitle = findViewById(R.id.titletext);
         editStart = findViewById(R.id.starttext);
         editEnd = findViewById(R.id.endtext);
+
         termId = getIntent().getIntExtra("id", -1);
         title = getIntent().getStringExtra("name");
-        start = getIntent().getStringExtra("price");
+        start = getIntent().getStringExtra("start");
         end = getIntent().getStringExtra("end");
+
         editTitle.setText(title);
-        editEnd.setText(start);
+        editStart.setText(start);
         editEnd.setText(end);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TermDetail.this, CourseDetail.class);
-                intent.putExtra("termID", termId);
+                intent.putExtra("termId", termId);
                 startActivity(intent);
             }
         });
