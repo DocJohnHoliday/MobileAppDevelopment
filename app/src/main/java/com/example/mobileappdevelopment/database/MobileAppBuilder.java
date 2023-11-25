@@ -13,7 +13,7 @@ import com.example.mobileappdevelopment.entities.Assessments;
 import com.example.mobileappdevelopment.entities.Courses;
 import com.example.mobileappdevelopment.entities.Terms;
 
-@Database(entities = {Assessments.class, Courses.class, Terms.class}, version = 4, exportSchema = false)
+@Database(entities = {Assessments.class, Courses.class, Terms.class}, version = 6, exportSchema = false)
 public abstract class MobileAppBuilder extends RoomDatabase {
     public abstract TermDAO termDao();
 

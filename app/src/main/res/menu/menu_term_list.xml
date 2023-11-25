@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="add_sample_code"
+    <item android:title="add sample code"
         android:id="@+id/sample"/>
     <item android:title="item"
         android:id="@+id/item"/>

@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mobileappdevelopment.R;
 import com.example.mobileappdevelopment.database.Repository;
@@ -24,6 +25,7 @@ import com.example.mobileappdevelopment.entities.Terms;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,6 +37,9 @@ public class CourseDetail extends AppCompatActivity {
     String instrName;
     String instrPhone;
     String instrEmail;
+
+    String courseStart;
+    String courseEnd;
     int courseID;
     int termID;
     EditText editTitle;
@@ -43,10 +48,15 @@ public class CourseDetail extends AppCompatActivity {
     EditText editPhone;
     EditText editEmail;
     EditText editNote;
-    TextView editDate;
+    TextView editCourseStart;
+    TextView editCourseEnd;
     Repository repository;
     DatePickerDialog.OnDateSetListener startDate;
+    DatePickerDialog.OnDateSetListener endDate;
     final Calendar myCalendarStart = Calendar.getInstance();
+    final Calendar myCalendarEnd = Calendar.getInstance();
+
+    Courses currentCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +64,7 @@ public class CourseDetail extends AppCompatActivity {
         setContentView(R.layout.activity_detailed_course_view);
         repository = new Repository(getApplication());
 
-        title = getIntent().getStringExtra("title");
+        title = getIntent().getStringExtra("title_course");
         editTitle = findViewById(R.id.courseTitle);
         editTitle.setText(title);
 
@@ -74,24 +84,31 @@ public class CourseDetail extends AppCompatActivity {
         editEmail = findViewById(R.id.instructorEmail);
         editEmail.setText(instrEmail);
 
-        courseID = getIntent().getIntExtra("id", -1);
+        courseStart = getIntent().getStringExtra("course_start_date");
+        editCourseStart = findViewById(R.id.courseStartDate);
+        editCourseStart.setText(courseStart);
+
+        courseEnd = getIntent().getStringExtra("course_end_date");
+        editCourseEnd = findViewById(R.id.courseEndDate);
+        editCourseEnd.setText(courseEnd);
+
+        courseID = getIntent().getIntExtra("courseID", -1);
         termID = getIntent().getIntExtra("termID", -1);
 
         editNote = findViewById(R.id.note);
-        editDate = findViewById(R.id.date);
 
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        editDate.setOnClickListener(new View.OnClickListener() {
+        editCourseStart.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Date date;
                 //get value from other screen,but I'm going to hard code it right now
-                String info = editDate.getText().toString();
-                if (info.equals("")) info = "07/01/23";
+                String info = editCourseStart.getText().toString();
+                if (info.equals("")) info = LocalDate.now().toString();
                 try {
                     myCalendarStart.setTime(sdf.parse(info));
                 } catch (ParseException e) {
@@ -113,25 +130,63 @@ public class CourseDetail extends AppCompatActivity {
 
             }
         };
-        Spinner spinner = findViewById(R.id.spinner);
-        ArrayList<Terms> termArrayList;
 
-        try {
-            termArrayList = new ArrayList<>(repository.getmAllTerms());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        editCourseEnd.setOnClickListener(new View.OnClickListener() {
 
-        ArrayAdapter<Terms> termAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, termArrayList);
-        spinner.setAdapter(termAdapter);
-        spinner.setSelection(0);
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Date date;
+                //get value from other screen,but I'm going to hard code it right now
+                String info2 = editCourseEnd.getText().toString();
+                if (info2.equals("")) info2 = LocalDate.now().toString();
+                try {
+                    myCalendarEnd.setTime(sdf.parse(info2));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                new DatePickerDialog(CourseDetail.this, endDate, myCalendarEnd
+                        .get(Calendar.YEAR), myCalendarEnd.get(Calendar.MONTH),
+                        myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        endDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                myCalendarEnd.set(Calendar.YEAR, year);
+                myCalendarEnd.set(Calendar.MONTH, month);
+                myCalendarEnd.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabelEnd();
+
+            }
+        };
+        //Spinner spinner=findViewById(R.id.spinner);
+//        ArrayList<Terms> termsArrayList=new ArrayList<>();
+//
+//        try {
+//            termsArrayList.addAll(repository.getmAllTerms());
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+
+//        ArrayAdapter<Terms>productAdapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,termsArrayList);
+//        spinner.setAdapter(productAdapter);
+//        spinner.setSelection(0);
     }
 
     private void updateLabelStart() {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        editDate.setText(sdf.format(myCalendarStart.getTime()));
+        editCourseStart.setText(sdf.format(myCalendarStart.getTime()));
+    }
+
+    private void updateLabelEnd() {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        editCourseEnd.setText(sdf.format(myCalendarEnd.getTime()));
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -152,20 +207,37 @@ public class CourseDetail extends AppCompatActivity {
 
         if (item.getItemId() == R.id.coursesave) {
             Courses courses;
-            if (courseID == -1) {
-                if (repository.getAllCourses().size() == 0)
-                    courseID = 1;
-                else
-                    courseID = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseId() + 1;
-                courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getText().toString(), editName.getText().toString(),
-                        editPhone.getText().toString(), editEmail.getText().toString(), termID);
-                repository.insert(courses);
+            if (termID == -1) {
+                Toast.makeText(CourseDetail.this, "You must create a Term to associate this course with.", Toast.LENGTH_LONG).show();
             } else {
-                courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getText().toString(), editName.getText().toString(),
-                        editPhone.getText().toString(), editEmail.getText().toString(), termID);
-                repository.update(courses);
+                if (courseID == -1) {
+                    if (myCalendarStart.after(myCalendarEnd)) {
+                        Toast.makeText(CourseDetail.this, "Start Date cannot be after End Date", Toast.LENGTH_LONG).show();
+                    } else {
+                        if (repository.getAllCourses().size() == 0)
+                            courseID = 1;
+                        else
+                            courseID = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseId() + 1;
+                        courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getText().toString(), editName.getText().toString(),
+                                editPhone.getText().toString(), editEmail.getText().toString(), editCourseStart.getText().toString(), editCourseEnd.getText().toString(), termID);
+                        repository.insert(courses);
+                        Toast.makeText(CourseDetail.this, "Course Created", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getText().toString(), editName.getText().toString(),
+                            editPhone.getText().toString(), editEmail.getText().toString(), editCourseStart.getText().toString(), editCourseEnd.getText().toString(), termID);
+                    repository.update(courses);
+                    Toast.makeText(CourseDetail.this, "Course Updated.", Toast.LENGTH_LONG).show();
+                }
             }
-            return true;
+        }
+        if (item.getItemId() == R.id.coursedelete) {
+            for (Courses courses : repository.getAllCourses()) {
+                if (courses.getCourseId() == courseID) currentCourses = courses;
+            }
+            repository.delete(currentCourses);
+            Toast.makeText(CourseDetail.this, currentCourses.getCourseTitle() + " was deleted", Toast.LENGTH_LONG).show();
+            CourseDetail.this.finish();
         }
         if (item.getItemId() == R.id.sharenote) {
             Intent sentIntent = new Intent();
@@ -178,7 +250,7 @@ public class CourseDetail extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.notify) {
-            String dateFromScreen = editDate.getText().toString();
+            String dateFromScreen = editCourseStart.getText().toString();
             String myFormat = "MM/dd/yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
             Date myDate = null;

@@ -21,7 +21,7 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Title" />
+                android:text="Title: " />
 
             <EditText
                 android:id="@+id/courseTitle"
@@ -38,7 +38,7 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Status" />
+                android:text="Status: " />
 
             <EditText
                 android:id="@+id/courseStatus"
@@ -55,7 +55,7 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Instructor Name" />
+                android:text="Instructor Name: " />
 
             <EditText
                 android:id="@+id/instructorName"
@@ -72,7 +72,7 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Instructor Phone #" />
+                android:text="Instructor Phone #: " />
 
             <EditText
                 android:id="@+id/instructorPhone"
@@ -89,7 +89,7 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Instructor email" />
+                android:text="Instructor email: " />
 
             <EditText
                 android:id="@+id/instructorEmail"
@@ -106,12 +106,14 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Note" />
+                android:text="Start Date: " />
 
-            <EditText
-                android:id="@+id/note"
+            <TextView
+                android:id="@+id/courseStartDate"
                 android:layout_width="200dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="#E91E63"
+                android:inputType="none" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -123,18 +125,36 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Date" />
+                android:text="End Date: " />
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/courseEndDate"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
+                android:background="#9C3434"
                 android:inputType="none" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <Spinner
-            android:id="@+id/spinner"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:text="Note: " />
+
+            <EditText
+                android:id="@+id/note"
+                android:layout_width="200dp"
+                android:layout_height="match_parent" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--        <Spinner-->
+        <!--            android:id="@+id/spinner"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content" />-->
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

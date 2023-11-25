@@ -27,7 +27,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
         private final TextView courseItemView2;
 
-        public CourseViewHolder(@NonNull View itemView) {
+        private CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             courseItemView = itemView.findViewById(R.id.textView3);
             courseItemView2 = itemView.findViewById(R.id.textView4);
@@ -37,13 +37,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                     int position = getAdapterPosition();
                     final Courses current = mCourse.get(position);
                     Intent intent = new Intent(context, CourseDetail.class);
-                    intent.putExtra("id", current.getCourseId());
-                    intent.putExtra("title", current.getCourseTitle());
+                    intent.putExtra("courseID", current.getCourseId());
+                    intent.putExtra("title_course", current.getCourseTitle());
                     intent.putExtra("status", current.getStatus());
                     intent.putExtra("name", current.getInstructorName());
                     intent.putExtra("phone", current.getPhoneNumber());
                     intent.putExtra("email", current.getEmail());
-                    intent.putExtra("termId", current.getTermId());
+                    intent.putExtra("course_start_date", current.getCourseStartDate());
+                    intent.putExtra("course_end_date", current.getCourseEndDate());
+                    intent.putExtra("termID", current.getTermId());
                     context.startActivity(intent);
                 }
             });
