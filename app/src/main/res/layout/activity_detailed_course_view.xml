@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-71dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="363dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -21,9 +21,8 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:gravity="center"
                 android:text="Title: "
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <EditText
@@ -43,7 +42,7 @@
                 android:layout_margin="2dp"
                 android:gravity="center"
                 android:text="Select course status: "
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <Spinner
@@ -62,7 +61,9 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Instructor Name: " />
+                android:text="Instructor Name: "
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <EditText
                 android:id="@+id/instructorName"
@@ -79,12 +80,15 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Instructor Phone #: " />
+                android:text="Instructor Phone #: "
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <EditText
                 android:id="@+id/instructorPhone"
                 android:layout_width="200dp"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                tools:text="@tools:sample/us_phones" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -96,7 +100,9 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Instructor email: " />
+                android:text="Instructor email: "
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <EditText
                 android:id="@+id/instructorEmail"
@@ -113,7 +119,9 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Start Date: " />
+                android:text="Start Date: "
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:id="@+id/courseStartDate"
@@ -132,7 +140,9 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="End Date: " />
+                android:text="End Date: "
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:id="@+id/courseEndDate"
@@ -151,12 +161,18 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:text="Note: " />
+                android:text="Note: "
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <EditText
                 android:id="@+id/note"
                 android:layout_width="200dp"
                 android:layout_height="48dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

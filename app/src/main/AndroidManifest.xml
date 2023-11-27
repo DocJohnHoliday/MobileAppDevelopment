@@ -29,10 +29,12 @@
             android:parentActivityName=".UI.TermDetail"/>
         <activity
             android:name=".UI.AssessmentList"
+            android:parentActivityName=".UI.MainActivity"
             android:label="Assessment List"
             android:exported="false" />
         <activity
             android:name=".UI.CourseList"
+            android:parentActivityName=".UI.MainActivity"
             android:label="Course List"
             android:exported="false" />
         <activity
