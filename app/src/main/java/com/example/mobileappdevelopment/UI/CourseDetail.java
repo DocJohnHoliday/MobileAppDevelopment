@@ -22,6 +22,7 @@ import com.example.mobileappdevelopment.R;
 import com.example.mobileappdevelopment.database.Repository;
 import com.example.mobileappdevelopment.entities.Courses;
 import com.example.mobileappdevelopment.entities.Terms;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -61,6 +62,7 @@ public class CourseDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_course_view);
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton4);
         repository = new Repository(getApplication());
 
         title = getIntent().getStringExtra("title_course");
@@ -101,6 +103,15 @@ public class CourseDetail extends AppCompatActivity {
             int spinnerPosition = adapter.getPosition(status);
             editStatus.setSelection(spinnerPosition);
         }
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CourseDetail.this, AssessmentDetail.class);
+                intent.putExtra("courseID", courseID);
+                startActivity(intent);
+            }
+        });
 
 
 

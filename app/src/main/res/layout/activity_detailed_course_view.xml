@@ -5,174 +5,203 @@
     android:layout_height="match_parent"
     tools:context=".UI.CourseDetail">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="363dp">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:text="Title: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/courseTitle"
-                android:layout_width="200dp"
-                android:layout_height="match_parent" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:gravity="center"
-                android:text="Select course status: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <Spinner
-                android:id="@+id/courseSpinner"
-                android:layout_width="200dp"
-                android:layout_height="48dp" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="Title: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/courseTitle"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="Select course status: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <Spinner
+                    android:id="@+id/courseSpinner"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="Instructor Name: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/instructorName"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="Instructor Phone #: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/instructorPhone"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    tools:text="@tools:sample/us_phones" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="Instructor email: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/instructorEmail"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="Start Date: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/courseStartDate"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:background="#E91E63"
+                    android:inputType="none" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="End Date: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/courseEndDate"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:background="#9C3434"
+                    android:inputType="none" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:text="Note: "
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/note"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assessments Associated with Course" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/floatingActionButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        app:srcCompat="@android:drawable/ic_input_add" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:text="Instructor Name: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/instructorName"
-                android:layout_width="200dp"
-                android:layout_height="48dp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:text="Instructor Phone #: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/instructorPhone"
-                android:layout_width="200dp"
-                android:layout_height="48dp"
-                tools:text="@tools:sample/us_phones" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:text="Instructor email: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/instructorEmail"
-                android:layout_width="200dp"
-                android:layout_height="match_parent" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:text="Start Date: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <TextView
-                android:id="@+id/courseStartDate"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:background="#E91E63"
-                android:inputType="none" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:text="End Date: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <TextView
-                android:id="@+id/courseEndDate"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:background="#9C3434"
-                android:inputType="none" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:text="Note: "
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/note"
-                android:layout_width="200dp"
-                android:layout_height="48dp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
