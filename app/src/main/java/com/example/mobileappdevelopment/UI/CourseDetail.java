@@ -33,17 +33,16 @@ import java.util.Locale;
 
 public class CourseDetail extends AppCompatActivity {
     String title;
-    String status;
     String instrName;
+    String status;
     String instrPhone;
     String instrEmail;
-
     String courseStart;
     String courseEnd;
     int courseID;
     int termID;
     EditText editTitle;
-    EditText editStatus;
+    Spinner editStatus;
     EditText editName;
     EditText editPhone;
     EditText editEmail;
@@ -68,10 +67,6 @@ public class CourseDetail extends AppCompatActivity {
         editTitle = findViewById(R.id.courseTitle);
         editTitle.setText(title);
 
-        status = getIntent().getStringExtra("status");
-        editStatus = findViewById(R.id.courseStatus);
-        editStatus.setText(status);
-
         instrName = getIntent().getStringExtra("name");
         editName = findViewById(R.id.instructorName);
         editName.setText(instrName);
@@ -94,6 +89,20 @@ public class CourseDetail extends AppCompatActivity {
 
         courseID = getIntent().getIntExtra("courseID", -1);
         termID = getIntent().getIntExtra("termID", -1);
+
+        status = getIntent().getStringExtra("status");
+
+        editStatus = findViewById(R.id.courseSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.status_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        editStatus.setAdapter(adapter);
+
+        if (status != null) {
+            int spinnerPosition = adapter.getPosition(status);
+            editStatus.setSelection(spinnerPosition);
+        }
+
+
 
         editNote = findViewById(R.id.note);
 
@@ -161,18 +170,6 @@ public class CourseDetail extends AppCompatActivity {
 
             }
         };
-        //Spinner spinner=findViewById(R.id.spinner);
-//        ArrayList<Terms> termsArrayList=new ArrayList<>();
-//
-//        try {
-//            termsArrayList.addAll(repository.getmAllTerms());
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-
-//        ArrayAdapter<Terms>productAdapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,termsArrayList);
-//        spinner.setAdapter(productAdapter);
-//        spinner.setSelection(0);
     }
 
     private void updateLabelStart() {
@@ -217,14 +214,15 @@ public class CourseDetail extends AppCompatActivity {
                         if (repository.getAllCourses().size() == 0)
                             courseID = 1;
                         else
+
                             courseID = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseId() + 1;
-                        courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getText().toString(), editName.getText().toString(),
+                        courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getSelectedItem().toString(), editName.getText().toString(),
                                 editPhone.getText().toString(), editEmail.getText().toString(), editCourseStart.getText().toString(), editCourseEnd.getText().toString(), termID);
                         repository.insert(courses);
                         Toast.makeText(CourseDetail.this, "Course Created", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getText().toString(), editName.getText().toString(),
+                    courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getSelectedItem().toString(), editName.getText().toString(),
                             editPhone.getText().toString(), editEmail.getText().toString(), editCourseStart.getText().toString(), editCourseEnd.getText().toString(), termID);
                     repository.update(courses);
                     Toast.makeText(CourseDetail.this, "Course Updated.", Toast.LENGTH_LONG).show();

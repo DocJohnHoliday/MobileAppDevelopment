@@ -22,7 +22,7 @@ public class Repository {
     private List<Courses> mAllCourses;
     private List<Assessments> mAllAssessments;
 
-    private static int NUMBER_OF_THREADS = 4;
+    private static int NUMBER_OF_THREADS = 8;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public Repository(Application application) {

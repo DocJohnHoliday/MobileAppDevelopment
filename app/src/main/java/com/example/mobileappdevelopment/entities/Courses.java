@@ -16,6 +16,10 @@ public class Courses {
     private String courseStartDate;
     private String courseEndDate;
 
+    public String toString() {
+        return status;
+    }
+
     public String getCourseStartDate() {
         return courseStartDate;
     }
