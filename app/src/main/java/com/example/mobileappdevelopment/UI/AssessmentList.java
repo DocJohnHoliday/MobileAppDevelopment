@@ -25,14 +25,14 @@ public class AssessmentList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_assessments);
-        FloatingActionButton fab = findViewById(R.id.floatingActionButtonAssessmentList);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AssessmentList.this, AssessmentDetail.class);
-                startActivity(intent);
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.floatingActionButtonAssessmentList);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(AssessmentList.this, AssessmentDetail.class);
+//                startActivity(intent);
+//            }
+//        });
         RecyclerView recyclerView = findViewById(R.id.recyclerviewAssessmentList);
         repository = new Repository(getApplication());
             List<Assessments> allAssessments = repository.getAllAssessments();
@@ -41,18 +41,5 @@ public class AssessmentList extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             assessmentAdapter.setmAssessments(allAssessments);
         //System.out.println(getIntent().getStringExtra("test"));
-    }
-
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-        List<Assessments> allAssessments;
-            allAssessments = repository.getAllAssessments();
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final AssessmentAdapter assessmentAdapter = new AssessmentAdapter(this);
-        recyclerView.setAdapter(assessmentAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        assessmentAdapter.setmAssessments(allAssessments);
     }
 }

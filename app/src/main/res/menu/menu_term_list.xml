@@ -3,6 +3,4 @@
 
     <item android:title="add sample code"
         android:id="@+id/sample"/>
-    <item android:title="item"
-        android:id="@+id/item"/>
 </menu>

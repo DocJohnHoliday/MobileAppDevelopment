@@ -29,8 +29,8 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
 
         private AssessmentViewHolder(@NonNull View itemView) {
             super(itemView);
-            courseItemView = itemView.findViewById(R.id.textView3);
-            courseItemView2 = itemView.findViewById(R.id.textView4);
+            courseItemView = itemView.findViewById(R.id.textView7);
+            courseItemView2 = itemView.findViewById(R.id.textView8);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -56,7 +56,7 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
 
     @Override
     public AssessmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.course_list_item, parent, false);
+        View itemView = mInflater.inflate(R.layout.assessment_list_item, parent, false);
         return new AssessmentViewHolder(itemView);
     }
 

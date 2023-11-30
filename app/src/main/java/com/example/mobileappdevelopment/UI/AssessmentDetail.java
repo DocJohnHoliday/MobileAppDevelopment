@@ -211,7 +211,8 @@ public class AssessmentDetail extends AppCompatActivity {
             Toast.makeText(AssessmentDetail.this, currentAssessments.getAssessmentTitle() + " was deleted", Toast.LENGTH_LONG).show();
             AssessmentDetail.this.finish();
         }
-        if (item.getItemId() == R.id.notifyCourseEnd) {
+
+        if (item.getItemId() == R.id.notifyAssessmentStart) {
             String dateFromScreen = editAssessmentStart.getText().toString();
             String myFormat = "MM/dd/yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -223,10 +224,31 @@ public class AssessmentDetail extends AppCompatActivity {
             }
             Long trigger = myDate.getTime();
             Intent intent = new Intent(AssessmentDetail.this, MyReceiver.class);
-            intent.putExtra("key", "message I want to see");
+            intent.putExtra("key", "Assessment Start Date");
             PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+            Toast.makeText(AssessmentDetail.this, "Notification set for Assessment Start Date", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.notifyAssessmentEnd) {
+            String dateFromScreen = editAssessmentEnd.getText().toString();
+            String myFormat = "MM/dd/yy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            Date myDate = null;
+            try {
+                myDate = sdf.parse(dateFromScreen);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Long trigger = myDate.getTime();
+            Intent intent = new Intent(AssessmentDetail.this, MyReceiver.class);
+            intent.putExtra("key", "Assessment End Date");
+            PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_IMMUTABLE);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+            Toast.makeText(AssessmentDetail.this, "Notification set for Assessment End Date", Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);

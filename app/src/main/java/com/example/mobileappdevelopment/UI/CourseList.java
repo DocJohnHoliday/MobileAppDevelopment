@@ -26,14 +26,14 @@ public class CourseList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_courses);
-        FloatingActionButton fab = findViewById(R.id.floatingActionButtonCourseList);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CourseList.this, CourseDetail.class);
-                startActivity(intent);
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.floatingActionButtonCourseList);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(CourseList.this, CourseDetail.class);
+//                startActivity(intent);
+//            }
+//        });
         RecyclerView recyclerView = findViewById(R.id.recyclerviewCourseList);
         repository = new Repository(getApplication());
             List<Courses> allCourses = repository.getAllCourses();
@@ -44,30 +44,4 @@ public class CourseList extends AppCompatActivity {
         //System.out.println(getIntent().getStringExtra("test"));
     }
 
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_term_list, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        return true;
-//    }
-
-//    @Override
-//    protected void onResume() {
-//
-////        super.onResume();
-////        List<Terms> allTerms;
-////        try {
-////            allTerms = repository.getmAllTerms();
-////        } catch (InterruptedException e) {
-////            throw new RuntimeException(e);
-////        }
-////        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-////        final TermAdapter termAdapter = new TermAdapter(this);
-////        recyclerView.setAdapter(termAdapter);
-////        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-////        termAdapter.setTerms(allTerms);
-//    }
 }

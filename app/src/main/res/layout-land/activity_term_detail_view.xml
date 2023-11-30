@@ -1,0 +1,127 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.TermDetail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-43dp">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="404dp"
+            android:layout_height="179dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="205dp"
+                            android:layout_height="50dp"
+                            android:padding="10dp"
+                            android:text="Title:" />
+
+                        <EditText
+                            android:id="@+id/titleText"
+                            android:layout_width="209dp"
+                            android:layout_height="50dp"
+                            android:hint="Term 1" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:orientation="horizontal"
+                        android:textAlignment="center">
+
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="2dp"
+                            android:text="Start Date: " />
+
+                        <TextView
+                            android:id="@+id/termStartDate"
+                            android:layout_width="200dp"
+                            android:layout_height="match_parent"
+                            android:background="#A0A6A6"
+                            android:hint="01/01/2023"
+                            android:inputType="none" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="2dp"
+                            android:text="End Date: " />
+
+                        <TextView
+                            android:id="@+id/termEndDate"
+                            android:layout_width="200dp"
+                            android:layout_height="match_parent"
+                            android:background="#6DA2A8"
+                            android:hint="01/01/2023"
+                            android:inputType="none" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="223dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:text="Courses associated with this term."
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/courserecyclerview"
+            android:layout_width="281dp"
+            android:layout_height="126dp"
+            android:layout_gravity="center">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:contentDescription="Add course"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.example.mobileappdevelopment.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.mobileappdevelopment.R;
 import com.example.mobileappdevelopment.database.Repository;
+import com.example.mobileappdevelopment.entities.Assessments;
 import com.example.mobileappdevelopment.entities.Courses;
 import com.example.mobileappdevelopment.entities.Terms;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,6 +33,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class CourseDetail extends AppCompatActivity {
@@ -185,6 +189,17 @@ public class CourseDetail extends AppCompatActivity {
 
             }
         };
+
+        RecyclerView recyclerView = findViewById(R.id.assessmentrecycleview);
+        repository = new Repository(getApplication());
+        final AssessmentAdapter assessmentAdapter = new AssessmentAdapter(this);
+        recyclerView.setAdapter(assessmentAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        List<Assessments> filteredAssessment = new ArrayList<>();
+        for (Assessments a : repository.getAllAssessments()) {
+            if (a.getCourseId() == courseID) filteredAssessment.add(a);
+        }
+        assessmentAdapter.setmAssessments(filteredAssessment);
     }
 
     private void updateLabelStart() {
@@ -280,6 +295,7 @@ public class CourseDetail extends AppCompatActivity {
             PendingIntent sender = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+            Toast.makeText(CourseDetail.this, "Notification set for Course Start Date", Toast.LENGTH_LONG).show();
             return true;
         }
         if (item.getItemId() == R.id.notifyCourseEnd) {
@@ -298,6 +314,7 @@ public class CourseDetail extends AppCompatActivity {
             PendingIntent sender = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+            Toast.makeText(CourseDetail.this, "Notification set for Course End Date", Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
