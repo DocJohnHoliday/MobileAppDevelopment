@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,39 +14,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileAppDevelopment"
         tools:targetApi="31">
+        <receiver
+            android:name=".UI.MyReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <activity
             android:name=".UI.AssessmentDetail"
+            android:exported="false"
             android:label="Assessment Details"
-            android:exported="false" />
+            android:parentActivityName=".UI.CourseDetail"/>
         <activity
             android:name=".UI.TermDetail"
-            android:parentActivityName=".UI.TermList"
+            android:exported="false"
             android:label="Term Details"
-            android:exported="false" />
+            android:parentActivityName=".UI.TermList" />
         <activity
             android:name=".UI.CourseDetail"
-            android:label="Course Details"
             android:exported="false"
-            android:parentActivityName=".UI.TermDetail"/>
+            android:label="Course Details"
+            android:parentActivityName=".UI.TermDetail" />
         <activity
             android:name=".UI.AssessmentList"
-            android:parentActivityName=".UI.MainActivity"
+            android:exported="false"
             android:label="Assessment List"
-            android:exported="false" />
+            android:parentActivityName=".UI.MainActivity" />
         <activity
             android:name=".UI.CourseList"
-            android:parentActivityName=".UI.MainActivity"
+            android:exported="false"
             android:label="Course List"
-            android:exported="false" />
+            android:parentActivityName=".UI.MainActivity" />
         <activity
             android:name=".UI.TermList"
-            android:parentActivityName=".UI.MainActivity"
+            android:exported="false"
             android:label="Term List"
-            android:exported="false" />
+            android:parentActivityName=".UI.MainActivity" />
         <activity
             android:name=".UI.MainActivity"
-            android:label="Home Screen"
-            android:exported="true">
+            android:exported="true"
+            android:label="Home Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

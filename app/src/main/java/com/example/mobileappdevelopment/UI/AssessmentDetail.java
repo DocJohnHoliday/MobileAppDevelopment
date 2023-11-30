@@ -211,7 +211,7 @@ public class AssessmentDetail extends AppCompatActivity {
             Toast.makeText(AssessmentDetail.this, currentAssessments.getAssessmentTitle() + " was deleted", Toast.LENGTH_LONG).show();
             AssessmentDetail.this.finish();
         }
-        if (item.getItemId() == R.id.notify) {
+        if (item.getItemId() == R.id.notifyCourseEnd) {
             String dateFromScreen = editAssessmentStart.getText().toString();
             String myFormat = "MM/dd/yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);

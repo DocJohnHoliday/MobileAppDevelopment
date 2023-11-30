@@ -8,7 +8,7 @@ public class Courses {
     @PrimaryKey(autoGenerate = true)
     private int courseId;
     private String courseTitle;
-
+    private String note;
     private String status;
     private String instructorName;
     private String phoneNumber;
@@ -94,8 +94,16 @@ public class Courses {
         this.termId = termId;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public Courses(int courseId, String courseTitle, String status, String instructorName,
-                   String phoneNumber, String email, String courseStartDate, String courseEndDate, int termId) {
+                   String phoneNumber, String email, String courseStartDate, String courseEndDate, String note, int termId) {
         this.courseId = courseId;
         this.courseTitle = courseTitle;
         this.status = status;
@@ -104,6 +112,7 @@ public class Courses {
         this.email = email;
         this.courseStartDate = courseStartDate;
         this.courseEndDate = courseEndDate;
+        this.note = note;
         this.termId = termId;
     }
 }

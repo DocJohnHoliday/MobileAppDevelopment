@@ -11,6 +11,9 @@
         android:id="@+id/sharenote"
         android:title="Share Note" />
     <item
-        android:id="@+id/notify"
-        android:title="Notify" />
+        android:id="@+id/notifyCourseStart"
+        android:title="Notify Start Date" />
+    <item
+        android:id="@+id/notifyCourseEnd"
+        android:title="Notify End Date" />
 </menu>

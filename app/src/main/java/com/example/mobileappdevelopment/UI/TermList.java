@@ -63,10 +63,10 @@ public class TermList extends AppCompatActivity {
             terms = new Terms(0, "Second Term", "2023-05-01", "2023-05-01");
             repository.insert(terms);
             Courses courses = new Courses(0, "C196", "Incomplete",
-                    "Carolyn", "555-555-5555", "wgu.email", "2023-05-01", "2023-05-01", 1);
+                    "Carolyn", "555-555-5555", "wgu.email", "2023-05-01", "2023-05-01", "note", 1);
             repository.insert(courses);
             courses = new Courses(0, "C856", "Incomplete",
-                    "Taylor", "555-444-5555", "wgu.email","2023-05-01", "2023-05-01", 1);
+                    "Taylor", "555-444-5555", "wgu.email","2023-05-01", "2023-05-01", "note", 1);
             repository.insert(courses);
 
             return true;

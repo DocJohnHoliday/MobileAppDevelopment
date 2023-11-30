@@ -40,6 +40,7 @@ public class CourseDetail extends AppCompatActivity {
     String instrEmail;
     String courseStart;
     String courseEnd;
+    String note;
     int courseID;
     int termID;
     EditText editTitle;
@@ -89,6 +90,10 @@ public class CourseDetail extends AppCompatActivity {
         editCourseEnd = findViewById(R.id.courseEndDate);
         editCourseEnd.setText(courseEnd);
 
+        note = getIntent().getStringExtra("note");
+        editNote = findViewById(R.id.note);
+        editNote.setText(note);
+
         courseID = getIntent().getIntExtra("courseID", -1);
         termID = getIntent().getIntExtra("termID", -1);
 
@@ -112,7 +117,6 @@ public class CourseDetail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 
         editNote = findViewById(R.id.note);
@@ -227,14 +231,16 @@ public class CourseDetail extends AppCompatActivity {
                         else
 
                             courseID = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseId() + 1;
-                        courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getSelectedItem().toString(), editName.getText().toString(),
-                                editPhone.getText().toString(), editEmail.getText().toString(), editCourseStart.getText().toString(), editCourseEnd.getText().toString(), termID);
+                        courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getSelectedItem().toString(),
+                                editName.getText().toString(), editPhone.getText().toString(), editEmail.getText().toString(),
+                                editCourseStart.getText().toString(), editCourseEnd.getText().toString(), editNote.getText().toString(), termID);
                         repository.insert(courses);
                         Toast.makeText(CourseDetail.this, "Course Created", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getSelectedItem().toString(), editName.getText().toString(),
-                            editPhone.getText().toString(), editEmail.getText().toString(), editCourseStart.getText().toString(), editCourseEnd.getText().toString(), termID);
+                    courses = new Courses(courseID, editTitle.getText().toString(), editStatus.getSelectedItem().toString(),
+                            editName.getText().toString(), editPhone.getText().toString(), editEmail.getText().toString(),
+                            editCourseStart.getText().toString(), editCourseEnd.getText().toString(), editNote.getText().toString(), termID);
                     repository.update(courses);
                     Toast.makeText(CourseDetail.this, "Course Updated.", Toast.LENGTH_LONG).show();
                 }
@@ -251,14 +257,14 @@ public class CourseDetail extends AppCompatActivity {
         if (item.getItemId() == R.id.sharenote) {
             Intent sentIntent = new Intent();
             sentIntent.setAction(Intent.ACTION_SEND);
-            sentIntent.putExtra(Intent.EXTRA_TEXT, editNote.getText().toString() + "EXTRA_TEXT");
-            sentIntent.putExtra(Intent.EXTRA_TITLE, editNote.getText().toString() + "EXTRA_TITLE");
+            sentIntent.putExtra(Intent.EXTRA_TEXT, editNote.getText().toString());
+            sentIntent.putExtra(Intent.EXTRA_TITLE, editNote.getText().toString());
             sentIntent.setType("text/plain");
             Intent shareIntent = Intent.createChooser(sentIntent, null);
             startActivity(shareIntent);
             return true;
         }
-        if (item.getItemId() == R.id.notify) {
+        if (item.getItemId() == R.id.notifyCourseStart) {
             String dateFromScreen = editCourseStart.getText().toString();
             String myFormat = "MM/dd/yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -270,7 +276,25 @@ public class CourseDetail extends AppCompatActivity {
             }
             Long trigger = myDate.getTime();
             Intent intent = new Intent(CourseDetail.this, MyReceiver.class);
-            intent.putExtra("key", "message I want to see");
+            intent.putExtra("key", "Course Start Date");
+            PendingIntent sender = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_IMMUTABLE);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+            return true;
+        }
+        if (item.getItemId() == R.id.notifyCourseEnd) {
+            String dateFromScreen = editCourseEnd.getText().toString();
+            String myFormat = "MM/dd/yy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            Date myDate = null;
+            try {
+                myDate = sdf.parse(dateFromScreen);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Long trigger = myDate.getTime();
+            Intent intent = new Intent(CourseDetail.this, MyReceiver.class);
+            intent.putExtra("key", "Course End Date");
             PendingIntent sender = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
