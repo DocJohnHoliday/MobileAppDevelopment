@@ -9,8 +9,7 @@ This is a scheduling app that allows the user to add assessements to courses and
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 ## Make sure versions are the same
-> namespace 'com.example.mobileappdevelopment'
-    compileSdk 33
+>  compileSdk 33
 
     defaultConfig {
         applicationId "com.example.mobileappdevelopment"
