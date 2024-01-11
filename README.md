@@ -1,4 +1,24 @@
-COMPETENCIES
+# WGU Mobile App Developement
+I made this program in University for WGU. This program was made for mobile devices using Android.
+This is a scheduling app that allows the user to add assessements to courses and courses to terms. This app also has set notifications set by user.
+## Clone Repo
+> git clone https://github.com/DocJohnHoliday/MobileAppDevelopment
+## Make sure to have Android Studio Giraffe
+## Incase it's not added 
+> implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+## Make sure versions are the same
+> namespace 'com.example.mobileappdevelopment'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.mobileappdevelopment"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+### Competencies
 4026.01.4 : Saving Data
 
 The graduate explains ways to save data in a mobile application, and creates a data base in a mobile application.
